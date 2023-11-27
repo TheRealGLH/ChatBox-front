@@ -327,6 +327,19 @@
 
 <div class="content" role="main">
 
+  <div *ngIf="fbAuth.user | async as user;">
+    <nav>
+      <ul >
+        <li><a routerLink="/" >Home</a></li>
+        <li><a routerLink="/about">About</a></li>
+        <li><a routerLink="/contact">Contact us</a></li>
+        <li><a routerLink="/profile">User Profile</a></li>
+        <li><a (click)="fbAuth.signOut();" >Logout</a></li>
+      </ul>
+    </nav>
+  </div>
+  <firebase-ui (signInSuccessWithAuthResult)="successLoginCallback($event)"
+  (signInFailure)="errorLoginCallback($event)"></firebase-ui>
 
   <router-outlet></router-outlet>
 
