@@ -10,6 +10,10 @@ import {FirebaseUIModule, firebase, firebaseui} from 'firebaseui-angular';
 import {AngularFireModule} from '@angular/fire/compat';
 import {AngularFireAuthModule} from '@angular/fire/compat/auth';
 import { environment } from 'src/models/auth/environment';
+import { HomePageComponent } from './home-page/home-page.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { NewCharacterComponent } from './characters/new-character/new-character.component';
+import { ViewCharacterComponent } from './characters/view-character/view-character.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -46,7 +50,11 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 
 @NgModule({
   declarations: [
-      AppComponent
+      AppComponent,
+      HomePageComponent,
+      NotFoundComponent,
+      NewCharacterComponent,
+      ViewCharacterComponent
   ],
   imports: [
       BrowserModule,
