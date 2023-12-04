@@ -1,0 +1,7 @@
+<p>login works!</p>
+
+<div>
+    <input #username placeholder="User name" />
+    <input #password type="password" placeholder="Password" />
+    <button (click)="onSubmit(username.value,password.value)">Log in</button>
+</div>
