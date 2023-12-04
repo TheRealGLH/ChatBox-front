@@ -4,14 +4,21 @@
   <mat-form-field class="name-field">
     <mat-label>Name</mat-label>
     <input matInput value=""/>
-  </mat-form-field>
+  </mat-form-field><br/>
   <mat-form-field>
     <mat-label>Gender</mat-label>
     <mat-select>
-      @for (gender of characterGenders; track gender) {
+      @for (gender of characterGenders.list; track gender) {
         <mat-option [value]="gender.value">{{gender.viewValue}}</mat-option>
       }
     </mat-select>
   </mat-form-field>
 </div>
+<mat-divider></mat-divider>
+<div>
 
+<section>
+    <button mat-raised-button color="primary">Create</button>
+    <button mat-raised-button >Cancel</button>
+</section>
+</div>

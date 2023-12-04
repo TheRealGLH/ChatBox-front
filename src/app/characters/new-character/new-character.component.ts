@@ -7,6 +7,9 @@ import { CharacterGenders } from 'src/models/character/character-gender';
   styleUrls: ['./new-character.component.css']
 })
 export class NewCharacterComponent {
-  characterGender: CharacterGenders = new CharacterGenders;
+  characterGenders: CharacterGenders = new CharacterGenders;
+  
+  
 
 }
+
