@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CharacterGenders } from 'src/models/character/character-gender';
 
 @Component({
   selector: 'app-new-character',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./new-character.component.css']
 })
 export class NewCharacterComponent {
+  characterGender: CharacterGenders = new CharacterGenders;
 
 }

@@ -1,1 +1,17 @@
-<p>new-character works!</p>
+<h1>Create character</h1>
+
+<div>
+  <mat-form-field class="name-field">
+    <mat-label>Name</mat-label>
+    <input matInput value=""/>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Gender</mat-label>
+    <mat-select>
+      @for (gender of characterGenders; track gender) {
+        <mat-option [value]="gender.value">{{gender.viewValue}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>
+

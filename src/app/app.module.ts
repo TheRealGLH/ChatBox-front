@@ -14,6 +14,9 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NewCharacterComponent } from './characters/new-character/new-character.component';
 import { ViewCharacterComponent } from './characters/view-character/view-character.component';
+import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -62,6 +65,10 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
       AngularFireModule.initializeApp(environment.firebaseConfig),
       AngularFireAuthModule,
       FirebaseUIModule.forRoot(firebaseUiAuthConfig),
+      //material modules
+      MatFormFieldModule,
+      MatInputModule,
+      MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
