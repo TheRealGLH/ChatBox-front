@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FirebaseUISignInFailure, FirebaseUISignInSuccessWithAuthResult } from 'firebaseui-angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { FormControl } from "@angular/forms";
 
 
 @Component({

@@ -1,9 +1,11 @@
 <h1>Create character</h1>
 
 <div>
+
+  
   <mat-form-field class="name-field">
     <mat-label>Name</mat-label>
-    <input matInput value=""/>
+    <input matInput  [value]="characterNew.name"/>
   </mat-form-field><br/>
   <mat-form-field>
     <mat-label>Gender</mat-label>
@@ -18,7 +20,8 @@
 <div>
 
 <section>
-    <button mat-raised-button color="primary">Create</button>
+    <button mat-raised-button color="primary" type="submit" (click)="add()">Create</button>
     <button mat-raised-button >Cancel</button>
 </section>
+
 </div>

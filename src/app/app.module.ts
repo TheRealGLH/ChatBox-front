@@ -21,6 +21,11 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
+import { CharacterService } from 'src/models/character/character-service';
+import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
+import { HttpErrorHandler } from 'src/models/http-services/http-error-handling-service';
+import { MessageService } from 'src/models/http-services/message-service';
+import { ReactiveFormsModule } from "@angular/forms";
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -65,10 +70,12 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   ],
   imports: [
       BrowserModule,
+      HttpClientModule,
       AppRoutingModule,
       AngularFireModule.initializeApp(environment.firebaseConfig),
       AngularFireAuthModule,
       FirebaseUIModule.forRoot(firebaseUiAuthConfig),
+      ReactiveFormsModule,
       //material modules
       BrowserAnimationsModule,
       MatFormFieldModule,
@@ -76,7 +83,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
       MatSelectModule,
       MatButtonModule, MatDividerModule, MatIconModule
   ],
-  providers: [],
+  providers: [CharacterService, HttpClient, HttpErrorHandler, MessageService],
   bootstrap: [AppComponent]
   })
 export class AppModule { }
