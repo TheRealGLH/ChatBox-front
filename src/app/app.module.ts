@@ -26,6 +26,7 @@ import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http'
 import { HttpErrorHandler } from 'src/models/http-services/http-error-handling-service';
 import { MessageService } from 'src/models/http-services/message-service';
 import { ReactiveFormsModule } from "@angular/forms";
+import { AuthService } from 'src/models/http-services/auth-service';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -83,7 +84,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
       MatSelectModule,
       MatButtonModule, MatDividerModule, MatIconModule
   ],
-  providers: [CharacterService, HttpClient, HttpErrorHandler, MessageService],
+  providers: [CharacterService, HttpClient, HttpErrorHandler, MessageService, AuthService],
   bootstrap: [AppComponent]
   })
 export class AppModule { }

@@ -1,26 +1,26 @@
 export class Character {
     constructor(name: string, gender: number) { 
-        this._name = name;
-        this._gender = gender;
+        this.characterName = name;
+        this.gender = gender;
 
     }
     
     
-    private _name : string;
+    private characterName : string;
     public get name() : string {
-        return this._name;
+        return this.characterName;
     }
     public set name(v : string) {
-        this._name = v;
+        this.characterName = v;
     }
 
     
-    private _gender : number;
-    public get gender() : number {
-        return this._gender;
+    private gender : number;
+    public get charGender() : number {
+        return this.gender;
     }
-    public set gender(num : number) {
-        this._gender = num;
+    public set charGender(num : number) {
+        this.gender = num;
     }
     
     
