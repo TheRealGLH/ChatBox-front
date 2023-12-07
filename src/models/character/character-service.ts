@@ -38,4 +38,10 @@ export class CharacterService {
       .post<Character>(this.characterUrl, character, this.httpOptions)
       //.pipe(catchError(this.handleError('addCharacter', character)));
   }
+
+  readCharacter(characterId: string): Observable<Character> {
+    return this.http
+      .get<Character>(this.characterUrl+"/"+characterId, this.httpOptions)
+      //.pipe(catchError(this.handleError('addCharacter', character)));
+  }
 }
