@@ -3,6 +3,8 @@ import { Character } from 'src/models/character/character';
 import { CharacterGenders } from 'src/models/character/character-gender';
 import { CharacterService } from 'src/models/character/character-service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CharacterSubmission } from 'src/models/character/character-submission';
 
 @Component({
   selector: 'app-new-character',
@@ -11,17 +13,17 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class NewCharacterComponent {
   characterGenders: CharacterGenders = new CharacterGenders();
-  characterNew: Character = new Character('Mr. Sex', 0);
-  id: string = '';
+  characterNew: CharacterSubmission = new CharacterSubmission('Mr. Sex', 0);
+  characterCreated: Character | undefined;
 
-  constructor(private characterService: CharacterService) {}
+  constructor(private characterService: CharacterService,
+    private router: Router) {}
 
   add() {
-    //console.log(this.characterNew);
     this.createChar(this.characterNew);
   }
 
-  createChar(character: Character): void {
+  createChar(character: CharacterSubmission): void {
     character.name = character.name.trim();
     if (!character.name) {
       //TODO: Display error
@@ -31,7 +33,8 @@ export class NewCharacterComponent {
     // The server will generate the id for this new hero
     this.characterService
       .addCharacter(this.characterNew)
-      .subscribe((returnedId) => this.id);
-    console.log(this.id);
+      .subscribe((character) => {
+        this.router.navigate(['character/view/'+character.id])
+  })
   }
 }

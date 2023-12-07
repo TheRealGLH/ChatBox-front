@@ -9,6 +9,7 @@ import {
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Character } from './character';
 import { AuthService } from '../http-services/auth-service';
+import { CharacterSubmission } from './character-submission';
 
 @Injectable()
 export class CharacterService {
@@ -32,9 +33,9 @@ export class CharacterService {
     }),
   };
 
-  addCharacter(character: Character): Observable<Character> {
+  addCharacter(character: CharacterSubmission): Observable<Character> {
     return this.http
       .post<Character>(this.characterUrl, character, this.httpOptions)
-      .pipe(catchError(this.handleError('addCharacter', character)));
+      //.pipe(catchError(this.handleError('addCharacter', character)));
   }
 }
