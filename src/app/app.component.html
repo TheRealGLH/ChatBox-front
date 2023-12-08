@@ -129,9 +129,11 @@
     <router-outlet></router-outlet>
   </div>
   <ng-template #loggedOut>
+    <h1>Oh no. You're not signed in :(</h1>
     <firebase-ui
       (signInSuccessWithAuthResult)="successLoginCallback($event)"
       (signInFailure)="errorLoginCallback($event)"
+      s
     ></firebase-ui>
   </ng-template>
 </div>

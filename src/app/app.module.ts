@@ -32,7 +32,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
   signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      {
+      /*{
           scopes: [
               'public_profile',
               'email',
@@ -44,21 +44,18 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
           },
           provider:       firebase.auth.FacebookAuthProvider.PROVIDER_ID
       },
-      firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-      firebase.auth.GithubAuthProvider.PROVIDER_ID,
+      firebase.auth.GithubAuthProvider.PROVIDER_ID,*/
       {
           requireDisplayName: false,
           provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
-      },
-      firebase.auth.PhoneAuthProvider.PROVIDER_ID,
-      firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
+      }
   ],
   //term of service
   tosUrl: '<your-tos-link>',
   //privacy url
   privacyPolicyUrl: '<your-privacyPolicyUrl-link>',
   //credentialHelper:             firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM
-  credentialHelper: firebaseui.auth.CredentialHelper.NONE
+  credentialHelper: firebaseui.auth.CredentialHelper.GOOGLE_YOLO
 };
 
 @NgModule({
