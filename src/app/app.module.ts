@@ -30,6 +30,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { AuthService } from 'src/models/http-services/auth-service';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -85,6 +86,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
       MatInputModule,
       MatSelectModule,
       MatListModule,
+      MatToolbarModule,
       MatButtonModule, MatDividerModule, MatIconModule
   ],
   providers: [CharacterService, HttpClient, HttpErrorHandler, MessageService, AuthService],
