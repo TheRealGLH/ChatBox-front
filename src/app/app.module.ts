@@ -21,12 +21,16 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
+import {MatListModule} from '@angular/material/list';
 import { CharacterService } from 'src/models/character/character-service';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 import { HttpErrorHandler } from 'src/models/http-services/http-error-handling-service';
 import { MessageService } from 'src/models/http-services/message-service';
 import { ReactiveFormsModule } from "@angular/forms";
 import { AuthService } from 'src/models/http-services/auth-service';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -64,7 +68,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
       HomePageComponent,
       NotFoundComponent,
       NewCharacterComponent,
-      ViewCharacterComponent
+      SidenavComponent
   ],
   imports: [
       BrowserModule,
@@ -77,8 +81,11 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
       //material modules
       BrowserAnimationsModule,
       MatFormFieldModule,
+      MatSidenavModule,
       MatInputModule,
       MatSelectModule,
+      MatListModule,
+      MatToolbarModule,
       MatButtonModule, MatDividerModule, MatIconModule
   ],
   providers: [CharacterService, HttpClient, HttpErrorHandler, MessageService, AuthService],

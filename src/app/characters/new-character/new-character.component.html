@@ -1,25 +1,58 @@
-<h1>Create character</h1>
+<div class="new-char-container">
+  <h1>Create character</h1>
 
-<div>
-  <mat-form-field class="name-field">
-    <mat-label>Name</mat-label>
-    <input matInput [value]="characterNew.name" /> </mat-form-field
-  ><br />
-  <mat-form-field>
-    <mat-label>Gender</mat-label>
-    <mat-select>
-      @for (gender of characterGenders.list; track gender) {
-      <mat-option [value]="gender.value">{{ gender.viewValue }}</mat-option>
+  <div>
+    <mat-form-field class="name-field full-width">
+      <mat-label>Name</mat-label>
+      <input matInput [formControl]="formControlName"/>
+      @if (formControlName.hasError('minlength') && !formControlName.hasError('required')) {
+        <mat-error>That name is <strong>too short</strong></mat-error>
       }
-    </mat-select>
-  </mat-form-field>
-</div>
-<mat-divider></mat-divider>
-<div>
-  <section>
-    <button mat-raised-button color="primary" type="submit" (click)="add()">
-      Create
-    </button>
-    <button mat-raised-button>Cancel</button>
-  </section>
+      @if (formControlName.hasError('maxlength')) {
+        <mat-error>That name is <strong>too long</strong></mat-error>
+      }
+      @if (formControlName.hasError('required')) {
+        <mat-error>A name is <strong>required</strong></mat-error>
+      }
+      </mat-form-field><br />
+    <!--<mat-form-field>
+      <mat-label>Gender</mat-label>
+      <mat-select>
+        @for (gender of characterGenders.list; track gender) {
+        <mat-option [value]="gender.value">{{ gender.viewValue }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>-->
+    <mat-form-field>
+      <mat-label>Species</mat-label>
+      <input matInput [formControl]="formControlSpecies"/>
+      @if (formControlSpecies.hasError('maxlength')) {
+        <mat-error>That name is <strong>too long</strong></mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Pronouns</mat-label>
+      <input matInput [formControl]="formControlPronouns"/>
+      @if (formControlPronouns.hasError('maxlength')) {
+        <mat-error>These pronouns are <strong>too long</strong></mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Bio</mat-label>
+      <textarea matInput placeholder="Write a short bio of your character. (optional)" [formControl]="formControlBio"></textarea>
+      @if (formControlBio.hasError('maxlength')) {
+        <mat-error>That bio is <strong>too long</strong></mat-error>
+      }
+    </mat-form-field>
+  </div>
+  <p>You can add additional information, such as a picture and profile later.</p>
+  <mat-divider></mat-divider>
+  <div>
+    <section>
+      <button mat-raised-button color="primary" type="submit" (click)="add()">
+        Create
+      </button>
+      <button mat-raised-button>Cancel</button>
+    </section>
+  </div>
 </div>

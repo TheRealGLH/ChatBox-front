@@ -1,2 +1,35 @@
-<p>view-character works!</p>
-<h2>{{character?.characterName}}</h2>
+<mat-card>
+  <mat-card-content class="charview-bio">
+    <div class="charview-bio-block">
+      <h2>{{ character?.characterName || "%character name%" }}</h2>
+      <h3>%species%</h3>
+      <h3>%pro/nouns%</h3>
+    </div>
+    <span class="charview-bio-spacer"></span>
+    <div class="charview-bio-block charview-bio-avatar" [style.background]="'url(' + imageUrl + ')'">
+    </div>
+  </mat-card-content>
+  <mat-card-content>
+    {{ longText }}
+  </mat-card-content>
+  <mat-card-actions>
+    <button matTooltip="Delete" mat-icon-button color="warn">
+        <mat-icon fontIcon="delete"></mat-icon>
+      </button>
+      <button matTooltip="Edit" mat-icon-button color="primary">
+        <mat-icon fontIcon="edit_note"></mat-icon>
+      </button>
+      <button matTooltip="Bookmark" mat-icon-button color="primary">
+        <mat-icon fontIcon="bookmark"></mat-icon>
+      </button>
+      <button matTooltip="Send Friend Request" mat-icon-button color="primary">
+        <mat-icon fontIcon="group_add"></mat-icon>
+      </button>
+  </mat-card-actions>
+</mat-card>
+<mat-divider></mat-divider>
+<mat-card>
+  <mat-card-content>
+    {{ longerText }}
+  </mat-card-content>
+</mat-card>
