@@ -1,7 +1,10 @@
-.example-sidenav-content {
+.sidenav-content {
     display: flex;
     height: 100%;
   }
-  .example-container {
+.sidenav {
+  padding-top: 14px;
+}
+  .sidenav-container {
     height: 100%;
   }
