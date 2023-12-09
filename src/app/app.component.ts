@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
 import { FirebaseUISignInFailure, FirebaseUISignInSuccessWithAuthResult } from 'firebaseui-angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { FormControl } from "@angular/forms";
+import {MatButtonModule} from '@angular/material/button';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
+ 
 })
 export class AppComponent {
+
+  showFiller = false;
 
 constructor(public fbAuth: AngularFireAuth){
 

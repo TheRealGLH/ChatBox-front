@@ -27,6 +27,8 @@ import { HttpErrorHandler } from 'src/models/http-services/http-error-handling-s
 import { MessageService } from 'src/models/http-services/message-service';
 import { ReactiveFormsModule } from "@angular/forms";
 import { AuthService } from 'src/models/http-services/auth-service';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -65,6 +67,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
       NotFoundComponent,
       NewCharacterComponent,
       ViewCharacterComponent,
+      SidenavComponent
   ],
   imports: [
       BrowserModule,
@@ -77,6 +80,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
       //material modules
       BrowserAnimationsModule,
       MatFormFieldModule,
+      MatSidenavModule,
       MatInputModule,
       MatSelectModule,
       MatButtonModule, MatDividerModule, MatIconModule

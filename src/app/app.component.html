@@ -105,35 +105,44 @@
   }
 </style>
 
-<!-- Toolbar -->
-<div class="toolbar" role="banner">
-  <img
-    width="40"
-    alt="Angular Logo"
-    src="/assets/chatbox-logo/logo.png"
-  />
-  <span>Welcome</span>
-  <div class="spacer"></div>
-  <a
-    *ngIf="fbAuth.user | async as user"
-    aria-label="Log out"
-    (click)="fbAuth.signOut()"
-    title="Twitter"
-  >
-    Log out.</a
-  >
-</div>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" color="primary" mode="over">
+    <p>Auto-resizing sidenav</p>
+    @if (true) {
+    <app-sidenav></app-sidenav>
+    }
+  </mat-drawer>
 
-<div class="content" role="main">
-  <div *ngIf="fbAuth.user | async as user; else loggedOut">
-    <router-outlet></router-outlet>
+  <div class="example-sidenav-content">
+    <!-- Toolbar -->
+    <div class="toolbar" role="banner">
+      <img width="40" src="/assets/chatbox-logo/logo.png" />
+      <button type="button" mat-button (click)="drawer.toggle()">
+        Toggle sidenav
+      </button>
+      <span>Welcome</span>
+      <div class="spacer"></div>
+      <a
+        *ngIf="fbAuth.user | async as user"
+        aria-label="Log out"
+        (click)="fbAuth.signOut()"
+        title="Twitter"
+      >
+        Log out.
+      </a>
+    </div>
+    <div class="content" role="main">
+      <div *ngIf="fbAuth.user | async as user; else loggedOut">
+        <router-outlet></router-outlet>
+      </div>
+      <ng-template #loggedOut>
+        <h1>Oh no. You're not signed in :(</h1>
+        <firebase-ui
+          (signInSuccessWithAuthResult)="successLoginCallback($event)"
+          (signInFailure)="errorLoginCallback($event)"
+          s
+        ></firebase-ui>
+      </ng-template>
+    </div>
   </div>
-  <ng-template #loggedOut>
-    <h1>Oh no. You're not signed in :(</h1>
-    <firebase-ui
-      (signInSuccessWithAuthResult)="successLoginCallback($event)"
-      (signInFailure)="errorLoginCallback($event)"
-      s
-    ></firebase-ui>
-  </ng-template>
-</div>
+</mat-drawer-container>
