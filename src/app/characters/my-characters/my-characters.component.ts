@@ -30,7 +30,6 @@ export class MyCharactersComponent {
 
 
   openNewCharDialog() {
-    console.log("aaa")
     const dialogRef = this.dialog.open(NewCharacterComponent);
 
     dialogRef.afterClosed().subscribe(result => {
