@@ -68,7 +68,6 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
       HomePageComponent,
       NotFoundComponent,
       NewCharacterComponent,
-      ViewCharacterComponent,
       SidenavComponent
   ],
   imports: [

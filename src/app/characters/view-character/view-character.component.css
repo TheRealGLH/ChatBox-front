@@ -1,0 +1,18 @@
+.charview-bio {
+    display: flex;
+}
+
+.charview-bio-block{
+    display: inline-block;
+}
+
+.charview-bio-avatar {
+    height: 128px;
+    width: 128px;
+    border-radius: 100%;
+    background-size: 128px!important;
+}
+
+.charview-bio-spacer {
+    flex: 1 1 auto;
+}
