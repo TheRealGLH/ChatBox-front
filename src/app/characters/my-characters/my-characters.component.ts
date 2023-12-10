@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -7,15 +7,19 @@ import {TooltipPosition, MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 import { NewCharacterComponent } from '../new-character/new-character.component';
+import { Character } from 'src/models/character/character';
+import { CharacterService } from 'src/models/character/character-service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-my-characters',
   standalone: true,
-  imports: [MatButtonModule, MatCardModule, MatDividerModule, MatIconModule, MatTooltipModule, RouterModule, MatDialogModule],
+  imports: [MatButtonModule, MatCardModule, MatDividerModule, MatIconModule,
+    MatTooltipModule, RouterModule, MatDialogModule, CommonModule],
   templateUrl: './my-characters.component.html',
   styleUrl: './my-characters.component.css'
 })
-export class MyCharactersComponent {
+export class MyCharactersComponent implements OnInit {
 
   longText: String = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, "+
   "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim "+
@@ -24,8 +28,17 @@ export class MyCharactersComponent {
   "velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat "+
   "cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
-  constructor(public dialog: MatDialog){
+  characters: Character[] = [];
 
+  constructor(public dialog: MatDialog, private characterService: CharacterService){
+
+  }
+  ngOnInit(): void {
+    this.characterService
+    .readAllUserCharacters()
+    .subscribe((characters) => {
+      this.characters = characters;
+    });
   }
 
 

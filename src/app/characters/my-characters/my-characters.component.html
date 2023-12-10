@@ -1,17 +1,17 @@
 <h1>My Characters</h1>
 
 <div>
-  <mat-card class="char-card">
+  <mat-card class="char-card" *ngFor="let character of characters; index as i; last as isLast">
     <mat-card-header>
       <mat-card-title-group>
-        <mat-card-title class="char-card-title">Doctor Sex</mat-card-title>
-        <mat-card-subtitle>Human</mat-card-subtitle>
-        <mat-card-subtitle>He/ Him</mat-card-subtitle>
+        <mat-card-title class="char-card-title">{{character.characterName}}</mat-card-title>
+        <mat-card-subtitle>{{character.species}}</mat-card-subtitle>
+        <mat-card-subtitle>{{character.pronouns}}</mat-card-subtitle>
         <img mat-card-avatar src="/assets/temp/medic.jpeg" />
       </mat-card-title-group>
     </mat-card-header>
-    <mat-card-content>
-      {{ longText }}
+    <mat-card-content class="char-card-bio">
+      {{ character.bio }}
     </mat-card-content>
     <mat-card-actions>
       <button matTooltip="Delete" mat-icon-button color="warn">
@@ -20,7 +20,7 @@
       <button matTooltip="Edit" mat-icon-button color="primary">
         <mat-icon fontIcon="edit_note"></mat-icon>
       </button>
-      <button matTooltip="Preview" mat-icon-button color="primary">
+      <button matTooltip="Preview" routerLink="{{ '/character/view/'+character.id }}" mat-icon-button color="primary">
         <mat-icon fontIcon="preview"></mat-icon>
       </button>
     </mat-card-actions>
