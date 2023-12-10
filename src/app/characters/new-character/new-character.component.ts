@@ -13,7 +13,7 @@ import { CharacterSubmission } from 'src/models/character/character-submission';
 })
 export class NewCharacterComponent {
   characterGenders: CharacterGenders = new CharacterGenders();
-  characterNew: CharacterSubmission = new CharacterSubmission('Mr. Sex', 0);
+  characterNew: CharacterSubmission = new CharacterSubmission('Mr. Sex', "he/ him", "Human", "He is invincible.");
   characterCreated: Character | undefined;
   formControlName = new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]);
   formControlPronouns = new FormControl('', [Validators.maxLength(15)]);

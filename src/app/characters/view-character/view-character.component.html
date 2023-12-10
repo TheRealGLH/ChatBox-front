@@ -2,15 +2,15 @@
   <mat-card-content class="charview-bio">
     <div class="charview-bio-block">
       <h2>{{ character?.characterName || "%character name%" }}</h2>
-      <h3>%species%</h3>
-      <h3>%pro/nouns%</h3>
+      <h3>{{ character?.species||"%species%" }}</h3>
+      <h3>{{ character?.pronouns||"%pronouns%" }}</h3>
     </div>
     <span class="charview-bio-spacer"></span>
     <div class="charview-bio-block charview-bio-avatar" [style.background]="'url(' + imageUrl + ')'">
     </div>
   </mat-card-content>
   <mat-card-content>
-    {{ longText }}
+    {{ character?.bio||"%bio%" }}
   </mat-card-content>
   <mat-card-actions>
     <button matTooltip="Delete" mat-icon-button color="warn">
