@@ -1,6 +1,6 @@
 <h1>My Characters</h1>
 
-<div>
+<div id="card-container">
   <mat-card class="char-card" *ngFor="let character of characters; index as i; last as isLast">
     <mat-card-header>
       <mat-card-title-group>
@@ -24,8 +24,8 @@
         <mat-icon fontIcon="preview"></mat-icon>
       </button>
     </mat-card-actions>
+    <mat-divider *ngIf="(i == characters.length-1)"></mat-divider>
   </mat-card>
-  <mat-divider></mat-divider>
 </div>
 
 <div id="bottom-actions-container">
