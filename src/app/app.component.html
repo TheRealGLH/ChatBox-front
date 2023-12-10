@@ -115,19 +115,19 @@
   <div class="sidenav-content">
     <!-- Toolbar -->
     <mat-toolbar class="toolbar">
-      <button mat-icon-button class="toolbar-icon" (click)="drawer.toggle()">
+      <button mat-icon-button class="toolbar-icon" (click)="drawer.toggle()"  matTooltip="Show menu">
         <mat-icon>menu</mat-icon>
       </button>
-      <a routerLink="/">
+      <a routerLink="/"  matTooltip="Home">
         <img width="40" src="/assets/chatbox-logo/logo.png" />
       </a>
       <span class="toolbar-spacer"></span>
-      <a target="_blank" href="https://github.com/TheRealGLH/ChatBox-front">
+      <a  matTooltip="Source code" target="_blank" href="https://github.com/TheRealGLH/ChatBox-front">
         <button mat-icon-button class="toolbar-icon">
           <mat-icon>source</mat-icon>
         </button>
       </a>
-      <button
+      <button  matTooltip="Logout"
         mat-icon-button
         class="toolbar-icon"
         *ngIf="fbAuth.user | async as user"

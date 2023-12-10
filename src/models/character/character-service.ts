@@ -32,16 +32,36 @@ export class CharacterService {
           .accessToken,
     }),
   };
-
+  //TODO: re-enable these error handlers once we do proper backend testing again, 
+  //though we have to take into account the different return types
   addCharacter(character: CharacterSubmission): Observable<Character> {
     return this.http
       .post<Character>(this.characterUrl, character, this.httpOptions)
       //.pipe(catchError(this.handleError('addCharacter', character)));
   }
 
+  updateCharacter(character: CharacterSubmission, characterId: string): Observable<Character> {
+    return this.http
+      .put<Character>(this.characterUrl + "/" + characterId, character, this.httpOptions)
+      //.pipe(catchError(this.handleError('addCharacter', character)));
+  }
+
+  deleteCharacter(characterId: string): Observable<void> {
+    return this.http
+      .delete<void>(this.characterUrl + "/" + characterId, this.httpOptions)
+      //TODO: enable these errors once we do proper backend testing again, though we have to take into account the different return types
+      //.pipe(catchError(this.handleError('addCharacter', character)));
+  }
+
   readCharacter(characterId: string): Observable<Character> {
     return this.http
       .get<Character>(this.characterUrl+"/"+characterId, this.httpOptions)
+      //.pipe(catchError(this.handleError('addCharacter', character)));
+  }
+
+  readAllUserCharacters(): Observable<Character[]> {
+    return this.http
+      .get<Character[]>(this.characterUrl+"/mine", this.httpOptions)
       //.pipe(catchError(this.handleError('addCharacter', character)));
   }
 }

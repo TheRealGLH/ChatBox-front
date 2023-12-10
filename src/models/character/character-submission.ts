@@ -1,7 +1,9 @@
 export class CharacterSubmission {
-  constructor(name: string, gender: number) {
+  constructor(name: string, pronouns: string, species: string, bio: string) {
     this.characterName = name;
-    this.gender = gender;
+    this.pronouns = pronouns;
+    this.species = species;
+    this.bio = bio;
   }
 
   private characterName: string;
@@ -12,11 +14,27 @@ export class CharacterSubmission {
     this.characterName = v;
   }
 
-  private gender: number;
-  public get charGender(): number {
-    return this.gender;
+  private pronouns: string;
+  public getpronouns(): string {
+    return this.pronouns;
   }
-  public set charGender(num: number) {
-    this.gender = num;
+  public setpronouns(v: string) {
+    this.pronouns = v;
+  }
+
+  private species: string;
+  public getspecies(): string {
+    return this.species;
+  }
+  public setspecies(v: string) {
+    this.species = v;
+  }
+
+  private bio: string;
+  public getbio(): string {
+    return this.bio;
+  }
+  public setbio(v: string) {
+    this.bio = v;
   }
 }
