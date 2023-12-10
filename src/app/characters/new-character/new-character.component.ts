@@ -1,10 +1,10 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Character } from 'src/models/character/character';
 import { CharacterGenders } from 'src/models/character/character-gender';
-import { CharacterService } from 'src/models/character/character-service';
-import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { Router } from '@angular/router';
+import {FormControl, Validators} from '@angular/forms';
 import { CharacterSubmission } from 'src/models/character/character-submission';
+import { MatDialogRef } from '@angular/material/dialog';
+import { DIALOG_DATA } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-new-character',
@@ -20,24 +20,31 @@ export class NewCharacterComponent {
   formControlSpecies = new FormControl('', [Validators.maxLength(15)]);
   formControlBio = new FormControl('', [Validators.maxLength(1024)]);
 
-  constructor(private characterService: CharacterService,
-    private router: Router) {}
-  add() {
-    this.createChar(this.characterNew);
-  }
+  constructor(
+    public dialogRef: MatDialogRef<CharacterSubmission>,
+    @Inject(DIALOG_DATA) public data: DialogCharacterData,
+  ) {}
 
-  createChar(character: CharacterSubmission): void {
-    character.name = character.name.trim();
-    if (!character.name) {
-      //TODO: Display error
-      return;
+
+  attemptAdd(): void{
+    if(this.formControlBio.valid &&
+      this.formControlPronouns.valid &&
+      this.formControlName.valid &&
+      this.formControlSpecies.valid
+      ){
+        this.dialogRef.close(new CharacterSubmission(
+          "Mr. Test",
+          "he/ him",
+          "Human",
+          "He has a long history."
+        ));
     }
-
-    // The server will generate the id for this new hero
-    this.characterService
-      .addCharacter(this.characterNew)
-      .subscribe((character) => {
-        this.router.navigate(['character/view/'+character.id])
-  })
   }
+
+
+
+}
+
+export interface DialogCharacterData {
+  characterSubmission: CharacterSubmission;
 }

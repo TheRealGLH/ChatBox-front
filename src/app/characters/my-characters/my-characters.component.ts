@@ -11,6 +11,7 @@ import { Character } from 'src/models/character/character';
 import { CharacterService } from 'src/models/character/character-service';
 import { CommonModule } from '@angular/common';
 import { DialogConfirmComponent } from 'src/app/generic/dialog-confirm/dialog-confirm.component';
+import { CharacterSubmission } from 'src/models/character/character-submission';
 
 @Component({
   selector: 'app-my-characters',
@@ -75,9 +76,17 @@ export class MyCharactersComponent implements OnInit {
 
   openNewCharDialog() {
     const dialogRef = this.dialog.open(NewCharacterComponent);
-
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
+      let charSubmission: CharacterSubmission = result as CharacterSubmission;
+      if (charSubmission != undefined) {
+        this.characterService
+          .addCharacter(charSubmission)
+          .subscribe((resultId) => {
+            console.debug('Submitted id: ' + resultId);
+            this.fetchCharacters();
+          });
+      }
     });
   }
 }
