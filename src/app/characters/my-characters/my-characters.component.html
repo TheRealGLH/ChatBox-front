@@ -14,7 +14,7 @@
       {{ character.bio }}
     </mat-card-content>
     <mat-card-actions>
-      <button matTooltip="Delete" mat-icon-button color="warn">
+      <button matTooltip="Delete" mat-icon-button color="warn" (click)="openDeleteCharDialog(character.id)">
         <mat-icon fontIcon="delete"></mat-icon>
       </button>
       <button matTooltip="Edit" mat-icon-button color="primary">
