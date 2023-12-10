@@ -42,7 +42,7 @@ export class CharacterService {
 
   updateCharacter(character: CharacterSubmission, characterId: string): Observable<Character> {
     return this.http
-      .post<Character>(this.characterUrl + "/" + characterId, character, this.httpOptions)
+      .put<Character>(this.characterUrl + "/" + characterId, character, this.httpOptions)
       //.pipe(catchError(this.handleError('addCharacter', character)));
   }
 
