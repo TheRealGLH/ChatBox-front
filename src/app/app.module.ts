@@ -32,6 +32,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -88,7 +89,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
       MatListModule,
       MatToolbarModule,
       MatTooltipModule,
-      MatButtonModule, MatDividerModule, MatIconModule
+      MatButtonModule, MatDividerModule, MatIconModule,
+      MatProgressSpinnerModule
   ],
   providers: [CharacterService, HttpClient, HttpErrorHandler, MessageService, AuthService],
   bootstrap: [AppComponent]

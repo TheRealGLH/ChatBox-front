@@ -139,17 +139,25 @@
       </button>
     </mat-toolbar>
     <div class="content" role="main">
-      <div *ngIf="fbAuth.user | async as user; else loggedOut">
-        <router-outlet></router-outlet>
+      <div [ngSwitch]="loginState">
+        <div *ngSwitchCase="'Loading'">
+          <mat-spinner></mat-spinner>
+        </div>
+        <div *ngSwitchCase="'LoggedIn'">
+          <router-outlet></router-outlet>
+        </div>
+        <div *ngSwitchCase="'LoggedOut'">
+          <h1>Oh no. You're not signed in :(</h1>
+          <firebase-ui
+            (signInSuccessWithAuthResult)="successLoginCallback($event)"
+            (signInFailure)="errorLoginCallback($event)"
+            s
+          ></firebase-ui>
+        </div>
+
       </div>
-      <ng-template #loggedOut>
-        <h1>Oh no. You're not signed in :(</h1>
-        <firebase-ui
-          (signInSuccessWithAuthResult)="successLoginCallback($event)"
-          (signInFailure)="errorLoginCallback($event)"
-          s
-        ></firebase-ui>
-      </ng-template>
+
+
     </div>
   </div>
 </mat-drawer-container>
