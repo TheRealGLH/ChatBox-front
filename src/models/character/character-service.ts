@@ -10,10 +10,11 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Character } from './character';
 import { AuthService } from '../http-services/auth-service';
 import { CharacterSubmission } from './character-submission';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class CharacterService {
-  characterUrl = 'http://localhost:8080/character'; // URL to web api
+  characterUrl = environment.apiProtocol+environment.apiLocation+':'+environment.apiPort+'/character'; // URL to web api
   private handleError: HandleError;
   constructor(
     private http: HttpClient,
