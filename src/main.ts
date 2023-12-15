@@ -9,14 +9,13 @@ import { importProvidersFrom } from '@angular/core';
 import { HttpErrorHandler } from './models/http-services/http-error-handling-service';
 import { MessageService } from './models/http-services/message-service';
 import { CharacterService } from './models/character/character-service';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(HttpClientModule,
-      HttpErrorHandler,
-      MessageService,
-      CharacterService),
-  ]
+    importProvidersFrom(HttpClientModule, HttpErrorHandler, MessageService, CharacterService),
+    provideAnimations()
+]
 });
 
 platformBrowserDynamic().bootstrapModule(AppModule)
