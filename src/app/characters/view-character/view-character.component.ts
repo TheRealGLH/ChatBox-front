@@ -11,6 +11,9 @@ import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CharacterSubmission } from 'src/models/character/character-submission';
+import { Profile } from 'src/models/profile/profile';
+import { ProfileService } from 'src/models/profile/profile-service';
+import { ProfileSubmission } from 'src/models/profile/profile-submission';
 @Component({
   selector: 'app-view-character',
   templateUrl: './view-character.component.html',
@@ -39,13 +42,25 @@ export class ViewCharacterComponent implements OnInit {
   formControlPronouns = new FormControl('', [Validators.maxLength(15)]);
   formControlSpecies = new FormControl('', [Validators.maxLength(15)]);
   formControlBio = new FormControl('', [Validators.maxLength(1024)]);
-  editingProfile: boolean = false;
 
+  editingProfile: boolean = false;
+  formControlAge = new FormControl('', [
+    Validators.max(9999),
+    Validators.min(0),
+  ]);
+  formControlAgeDesc = new FormControl('', [Validators.maxLength(256)]);
+  formControlHeight = new FormControl('', [Validators.maxLength(256)]);
+  formControlOccupation = new FormControl('', [Validators.maxLength(256)]);
+  formControlPersonality = new FormControl('', [Validators.maxLength(256)]);
+  formControlLocation = new FormControl('', [Validators.maxLength(256)]);
+  formControlProfileText = new FormControl('', [Validators.maxLength(4096)]);
   constructor(
     private route: ActivatedRoute,
-    private characterService: CharacterService
+    private characterService: CharacterService,
+    private profileService: ProfileService
   ) {}
   character: Character | undefined;
+  profile: Profile | undefined;
 
   longText: String =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ' +
@@ -77,6 +92,14 @@ export class ViewCharacterComponent implements OnInit {
           this.character = character;
         });
     });
+    this.sub = this.route.params.subscribe((params) => {
+      this.id = params['characterId'];
+      this.profileService
+        .readProfile(params['characterId'])
+        .subscribe((profile) => {
+          this.profile = profile;
+        });
+    });
   }
 
   toggleEditChar(): void {
@@ -91,7 +114,22 @@ export class ViewCharacterComponent implements OnInit {
     }
   }
 
-  submitEdit(): void {
+  toggleEditProfile(): void {
+    this.editingProfile = !this.editingProfile;
+    if (this.editingProfile) {
+      this.formControlAge.setValue(this.profile?.age.toString() ?? '');
+      this.formControlAgeDesc.setValue(this.profile?.ageDescription ?? '');
+      this.formControlHeight.setValue(this.profile?.height ?? '');
+      this.formControlPersonality.setValue(
+        this.profile?.personalityDescription ?? ''
+      );
+      this.formControlOccupation.setValue(this.profile?.occupation ?? '');
+      this.formControlLocation.setValue(this.profile?.location ?? '');
+      this.formControlProfileText.setValue(this.profile?.profileText ?? '');
+    }
+  }
+
+  submitEditCharacter(): void {
     if (
       this.formControlBio.valid &&
       this.formControlPronouns.valid &&
@@ -114,5 +152,39 @@ export class ViewCharacterComponent implements OnInit {
       });
     }
     this.editingCharacter = false;
+  }
+  submitEditProfile(): void {
+    if (
+      //this.formControlAge.valid &&
+      this.formControlAgeDesc.valid &&
+      this.formControlBio.valid &&
+      this.formControlHeight.valid &&
+      this.formControlLocation.valid &&
+      this.formControlOccupation.valid &&
+      this.formControlPersonality.valid &&
+      this.formControlProfileText.valid
+    ) {
+      let profileSubmission: ProfileSubmission = new ProfileSubmission(
+        this.formControlProfileText.value ?? '',
+        parseInt(this.formControlAge.value ?? ''),
+        this.formControlAgeDesc.value ?? '',
+        this.formControlHeight.value ?? '',
+        this.formControlOccupation.value ?? '',
+        this.formControlPersonality.value ?? '',
+        this.formControlLocation.value ?? ''
+      );
+      this.sub = this.route.params.subscribe((params) => {
+        this.id = params['characterId'];
+        this.profileService
+          .updateProfile(profileSubmission, params['characterId'])
+          .subscribe((profile) => {
+            this.profile = profile;
+          });
+      });
+      this.editingProfile = false;
+    }
+    else {
+      console.debug("The form validation did not succeed...")
+    }
   }
 }

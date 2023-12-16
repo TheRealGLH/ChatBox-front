@@ -10,10 +10,11 @@ import { HttpErrorHandler } from './models/http-services/http-error-handling-ser
 import { MessageService } from './models/http-services/message-service';
 import { CharacterService } from './models/character/character-service';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { ProfileService } from './models/profile/profile-service';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(HttpClientModule, HttpErrorHandler, MessageService, CharacterService),
+    importProvidersFrom(HttpClientModule, HttpErrorHandler, MessageService, CharacterService, ProfileService),
     provideAnimations()
 ]
 });
@@ -21,4 +22,3 @@ bootstrapApplication(AppComponent, {
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 
-  
