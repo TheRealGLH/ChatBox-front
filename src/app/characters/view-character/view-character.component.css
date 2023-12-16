@@ -16,3 +16,8 @@
 .charview-bio-spacer {
     flex: 1 1 auto;
 }
+
+.charview-profile-text {
+    min-width: 370px;
+    min-height: 1em;
+}

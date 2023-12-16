@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CharacterSubmission } from 'src/models/character/character-submission';
+import { Profile } from 'src/models/profile/profile';
 @Component({
   selector: 'app-view-character',
   templateUrl: './view-character.component.html',
@@ -46,6 +47,7 @@ export class ViewCharacterComponent implements OnInit {
     private characterService: CharacterService
   ) {}
   character: Character | undefined;
+  profile: Profile | undefined;
 
   longText: String =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ' +
