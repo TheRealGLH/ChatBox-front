@@ -21,3 +21,7 @@
     min-width: 370px;
     min-height: 1em;
 }
+
+.full-width {
+    width: 100%;
+}
