@@ -1,0 +1,196 @@
+<mat-card>
+  <mat-card-content class="charview-bio">
+    <div
+      *ngIf="!this.editingCharacter; else editcharacter"
+      class="charview-bio-block"
+    >
+      <h2>{{ character?.characterName || "%character name%" }}</h2>
+      <h3>{{ character?.species || "%species%" }}</h3>
+      <h3>{{ character?.pronouns || "%pronouns%" }}</h3>
+    </div>
+    <ng-template #editcharacter>
+      <div>
+        <mat-form-field class="name-field full-width">
+          <mat-label>Name</mat-label>
+          <input matInput [formControl]="formControlName" />
+          @if (formControlName.hasError('minlength') &&
+          !formControlName.hasError('required')) {
+          <mat-error>That name is <strong>too short</strong></mat-error>
+          } @if (formControlName.hasError('maxlength')) {
+          <mat-error>That name is <strong>too long</strong></mat-error>
+          } @if (formControlName.hasError('required')) {
+          <mat-error>A name is <strong>required</strong></mat-error>
+          } </mat-form-field
+        ><br />
+        <mat-form-field>
+          <mat-label>Species</mat-label>
+          <input matInput [formControl]="formControlSpecies" />
+          @if (formControlSpecies.hasError('maxlength')) {
+          <mat-error>That name is <strong>too long</strong></mat-error>
+          } </mat-form-field
+        ><br />
+        <mat-form-field>
+          <mat-label>Pronouns</mat-label>
+          <input matInput [formControl]="formControlPronouns" />
+          @if (formControlPronouns.hasError('maxlength')) {
+          <mat-error>These pronouns are <strong>too long</strong></mat-error>
+          }
+        </mat-form-field>
+      </div>
+    </ng-template>
+
+    <span class="charview-bio-spacer"></span>
+    <div
+      class="charview-bio-block charview-bio-avatar"
+      [style.background]="'url(' + imageUrl + ')'"
+    ></div>
+  </mat-card-content>
+  <mat-card-content>
+    <div *ngIf="!this.editingCharacter; else editcharacterbio">
+      {{ character?.bio || "%bio%" }}
+    </div>
+
+    <ng-template #editcharacterbio>
+      <mat-form-field class="full-width">
+        <mat-label>Bio</mat-label>
+        <textarea
+          matInput
+          placeholder="Write a short bio of your character. (optional)"
+          [formControl]="formControlBio"
+        ></textarea>
+        @if (formControlBio.hasError('maxlength')) {
+        <mat-error>That bio is <strong>too long</strong></mat-error>
+        }
+      </mat-form-field>
+    </ng-template>
+
+    <button
+      mat-icon-button
+      color="primary"
+      *ngIf="editingCharacter"
+      (click)="submitEditCharacter()"
+    >
+      <mat-icon>save</mat-icon>
+    </button>
+  </mat-card-content>
+  <mat-card-actions>
+    <button matTooltip="Delete" mat-icon-button color="warn">
+      <mat-icon fontIcon="delete"></mat-icon>
+    </button>
+    <button
+      matTooltip="Edit"
+      mat-icon-button
+      color="primary"
+      (click)="toggleEditChar()"
+    >
+      <mat-icon fontIcon="edit_note"></mat-icon>
+    </button>
+    <button matTooltip="Bookmark" mat-icon-button color="primary">
+      <mat-icon fontIcon="bookmark"></mat-icon>
+    </button>
+    <button matTooltip="Send Friend Request" mat-icon-button color="primary">
+      <mat-icon fontIcon="group_add"></mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
+<mat-divider></mat-divider>
+
+<mat-card class="charview-profile">
+  <mat-card-content class="charview-bio-block">
+    <div *ngIf="!this.editingProfile; else editprofile">
+      <h3>{{ (profile?.age || "???") + " years" }}</h3>
+      <h3>{{ profile?.ageDescription }}</h3>
+      <h3>{{ "Height: " + (profile?.height || "???") }}</h3>
+      <h3>{{ "Occupation: " + profile?.occupation }}</h3>
+      <h3>{{ "Personality: " + profile?.personalityDescription }}</h3>
+      <h3>{{ "Location: " + profile?.location }}</h3>
+    </div>
+    <ng-template #editprofile>
+      <mat-card-content class="charview-bio-block">
+          <!--Here we put some cool forms-->
+          <mat-form-field>
+            <mat-label>Age</mat-label>
+            <input matInput [formControl]="formControlAge" type="number" min="0" max="9999" />
+            @if (formControlSpecies.hasError('max')) {
+            <mat-error>That age is <strong>too big</strong></mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>About age</mat-label>
+            <input matInput [formControl]="formControlAgeDesc" />
+            @if (formControlSpecies.hasError('maxlength')) {
+            <mat-error>That description is <strong>too long</strong></mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Height</mat-label>
+            <input matInput [formControl]="formControlHeight" />
+            @if (formControlSpecies.hasError('maxlength')) {
+            <mat-error>That description is <strong>too long</strong></mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Occupation</mat-label>
+            <input matInput [formControl]="formControlOccupation" />
+            @if (formControlSpecies.hasError('maxlength')) {
+            <mat-error>That description is <strong>too long</strong></mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Personality</mat-label>
+            <input matInput [formControl]="formControlPersonality" />
+            @if (formControlSpecies.hasError('maxlength')) {
+            <mat-error>That description is <strong>too long</strong></mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Location</mat-label>
+            <input matInput [formControl]="formControlLocation" />
+            @if (formControlSpecies.hasError('maxlength')) {
+            <mat-error>That description is <strong>too long</strong></mat-error>
+            }
+          </mat-form-field>
+      </mat-card-content>
+    </ng-template>
+  </mat-card-content>
+  <mat-card-content class="charview-profile-text">
+    <div  *ngIf="!this.editingProfile; else editprofiletext">
+      {{ profile?.profileText }}
+    </div>
+    <ng-template #editprofiletext>
+      <!---TODO: WYSIWYG editor-->
+      <mat-form-field class="full-width">
+        <mat-label>Profile text</mat-label>
+        <textarea
+          matInput
+          placeholder="Full profile text"
+          [formControl]="formControlProfileText"
+        ></textarea>
+        @if (formControlBio.hasError('maxlength')) {
+        <mat-error>That text is <strong>too long!</strong> (Max 4096 characters)</mat-error>
+        }
+      </mat-form-field>
+
+    </ng-template>
+  </mat-card-content>
+  <mat-card-actions *ngIf="character?.owner != null">
+    <button
+    matTooltip="Edit profile"
+    mat-icon-button
+    color="primary"
+    (click)="toggleEditProfile()"
+  >
+    <mat-icon fontIcon="edit_note"></mat-icon>
+  </button>
+  <button
+  *ngIf="this.editingProfile"
+  matTooltip="Save profile."
+  mat-icon-button
+  color="primary"
+  (click)="submitEditProfile()">
+    <mat-icon fontIcon="save"></mat-icon>
+  </button>
+  </mat-card-actions>
+</mat-card>
+
+

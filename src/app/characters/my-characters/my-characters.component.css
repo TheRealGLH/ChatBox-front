@@ -1,0 +1,22 @@
+.char-card {
+    width: 400px;
+    margin-bottom: 8px;
+  }
+.char-card-title {
+    font-weight: bold;
+}
+
+.char-card-bio {
+    min-height: 120px;
+}
+
+#bottom-actions-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 40px;
+}
+
+#card-container {
+    min-width: 400px;
+}
