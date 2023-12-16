@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CharacterSubmission } from 'src/models/character/character-submission';
 import { Profile } from 'src/models/profile/profile';
+import { ProfileService } from 'src/models/profile/profile-service';
 @Component({
   selector: 'app-view-character',
   templateUrl: './view-character.component.html',
@@ -44,7 +45,8 @@ export class ViewCharacterComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private characterService: CharacterService
+    private characterService: CharacterService,
+    private profileService: ProfileService
   ) {}
   character: Character | undefined;
   profile: Profile | undefined;
@@ -77,6 +79,14 @@ export class ViewCharacterComponent implements OnInit {
         .readCharacter(params['characterId'])
         .subscribe((character) => {
           this.character = character;
+        });
+    });
+    this.sub = this.route.params.subscribe((params) => {
+      this.id = params['characterId'];
+      this.profileService
+        .readProfile(params['characterId'])
+        .subscribe((profile) => {
+          this.profile = profile;
         });
     });
   }
