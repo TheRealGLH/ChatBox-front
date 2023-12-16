@@ -110,7 +110,7 @@
           <!--Here we put some cool forms-->
           <mat-form-field>
             <mat-label>Age</mat-label>
-            <input matInput [formControl]="formControlAge" type="number" />
+            <input matInput [formControl]="formControlAge" type="number" min="0" max="9999" />
             @if (formControlSpecies.hasError('max')) {
             <mat-error>That age is <strong>too big</strong></mat-error>
             }
