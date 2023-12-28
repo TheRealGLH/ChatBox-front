@@ -7,10 +7,12 @@ import { ViewCharacterComponent } from './characters/view-character/view-charact
 import { EditCharacterComponent } from './characters/edit-character/edit-character.component';
 import { MyCharactersComponent } from './characters/my-characters/my-characters.component';
 import { ChatComponent } from './chat/chat.component';
+import { WebsocketTestComponent } from './test/websocket-test/websocket-test.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'chat', component: ChatComponent },
+  { path: 'testws', component: WebsocketTestComponent },
   { path: 'character/mine', component: MyCharactersComponent},
   { path: 'character/view/:characterId', component: ViewCharacterComponent},
   { path: 'character/edit/:characterId', component: EditCharacterComponent},
