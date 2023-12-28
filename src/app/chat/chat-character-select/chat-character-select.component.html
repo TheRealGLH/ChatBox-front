@@ -1,7 +1,17 @@
-<p>chat-character-select works!</p>
-<ul>
-    Chars:
-    <li *ngFor="let character of this.characters; index as i;">
-        {{character.characterName}}
-    </li>
-</ul>
+<h2>Select a character</h2>
+
+<div>
+  <mat-form-field>
+    <mat-label>Characters</mat-label>
+    <mat-select>
+      @for (character of this.characters; track character) {
+      <mat-option [value]="character.id">{{
+        character.characterName
+      }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>
+<div>
+  <button mat-flat-button color="primary">Connect</button>
+</div>
