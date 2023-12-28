@@ -6,10 +6,11 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ViewCharacterComponent } from './characters/view-character/view-character.component';
 import { EditCharacterComponent } from './characters/edit-character/edit-character.component';
 import { MyCharactersComponent } from './characters/my-characters/my-characters.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'chat', component: ChatComponent },
   { path: 'character/mine', component: MyCharactersComponent},
   { path: 'character/view/:characterId', component: ViewCharacterComponent},
   { path: 'character/edit/:characterId', component: EditCharacterComponent},
