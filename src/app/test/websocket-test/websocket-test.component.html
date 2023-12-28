@@ -1,0 +1,10 @@
+<button mat-raised-button (click)="sendMessage()" color="warn">
+    Send message.
+</button>
+<div>
+    <ul>
+        <li *ngFor="let message of this.receivedMessages; index as i; last as isLast">
+            {{message}}
+        </li>
+    </ul>
+</div>
