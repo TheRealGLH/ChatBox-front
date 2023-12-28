@@ -1,1 +1,16 @@
-<p>chat-main works!</p>
+<div id="chat-container">
+    <div id="chat-messages">
+        <div class="chat-message" *ngFor="let chatMessage of this.chatMessages; index as i; last as isLast">
+            [{{chatMessage.timeStamp | date:'HH:mm'}}] {{chatMessage.ownerName}}: {{chatMessage.content}}
+        </div>
+    </div>
+
+    <div id="textfield">
+        <mat-form-field class="example-full-width">
+        <textarea id="chat-input" matNativeControl></textarea>
+    </mat-form-field>
+            <button mat-icon-button color="primary" id="chat-send">
+            <mat-icon>send</mat-icon>
+          </button>
+    </div>
+</div>

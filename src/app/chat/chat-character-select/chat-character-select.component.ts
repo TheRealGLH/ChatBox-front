@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { Output, EventEmitter } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -15,4 +16,5 @@ import { Character } from 'src/models/character/character';
 })
 export class ChatCharacterSelectComponent {
   @Input() characters: Character[] = [];
+  @Output() selectedCharacter = this.characters[0];
 }

@@ -1,8 +1,8 @@
-<div *ngIf="this.chatState.getSignedInCharacter() == undefined">
+<div *ngIf="!this.chatState.getSignedInCharacter() == undefined; else chatmain">
   <app-chat-character-select [characters]="this.chatState.userCharacters"></app-chat-character-select>
 </div>
 
-<ng-template>
+<ng-template #chatmain>
   <div>
     <app-chat-main></app-chat-main>
   </div>

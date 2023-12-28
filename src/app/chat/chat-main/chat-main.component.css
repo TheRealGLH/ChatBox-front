@@ -1,0 +1,25 @@
+#chat-container {
+    width: 100%;
+    display: relative;
+}
+
+#textfield{
+width: 100%;
+position: fixed;
+bottom: 0;
+margin: 0px;
+}
+
+#chat-input, #chat-send {
+    display: inline-block;
+}
+
+#chat-input {
+    width: 80%;
+    resize: none;
+    background-color: #0000;
+}
+
+#chat-send {
+
+}
