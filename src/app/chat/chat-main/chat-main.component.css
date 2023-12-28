@@ -8,14 +8,20 @@ width: 100%;
 position: fixed;
 bottom: 0;
 margin: 0px;
+padding-top: 0.5em;
+background: #152338;
 }
 
 #chat-input, #chat-send {
     display: inline-block;
 }
 
-#chat-input {
+.chat-full-width {
     width: 80%;
+}
+
+#chat-input {
+    width: 180%;
     resize: none;
     background-color: #0000;
 }

@@ -16,7 +16,7 @@ export class ChatMainComponent {
   chatMessages: ChatMessage[] = [];
 
   constructor(){
-    for (let index = 0; index < 10; index++) {
+    for (let index = 0; index < 40; index++) {
       let msg: ChatMessage = new ChatMessage(Date.now(),"Hello, I'm a test message or something", "314154r3eq","Fuckhead");
       this.chatMessages.push(msg);
     }
