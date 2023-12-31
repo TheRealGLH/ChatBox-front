@@ -3,9 +3,9 @@
 <div>
   <mat-form-field>
     <mat-label>Characters</mat-label>
-    <mat-select>
+    <mat-select [(value)]="selectedCharacter">
       @for (character of this.characters; track character) {
-      <mat-option [value]="character.id">{{
+      <mat-option [value]="character">{{
         character.characterName
       }}</mat-option>
       }
@@ -13,5 +13,5 @@
   </mat-form-field>
 </div>
 <div>
-  <button mat-flat-button color="primary">Connect</button>
+  <button mat-flat-button color="primary" (click)="_selectCharacterEvent(selectedCharacter)">Connect</button>
 </div>

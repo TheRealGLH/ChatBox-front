@@ -4,6 +4,6 @@ export const environment = {
     apiPort: "8080",
     chatWebsocketProtocol: "ws://",
     chatWebsocketLocation: "localhost",
-    chatWebsocketPath: "ws",
-    chatWebsocketPort: "5086"
+    chatWebsocketPath: "chat",
+    chatWebsocketPort: "8080"
 };

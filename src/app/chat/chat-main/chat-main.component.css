@@ -3,6 +3,10 @@
     display: relative;
 }
 
+#chat-messages {
+    min-width: 400px;
+}
+
 #textfield{
 width: 100%;
 position: fixed;

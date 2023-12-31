@@ -3,17 +3,27 @@ import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class WebsocketService {
   private socket!: WebSocket;
 
   messageReceived: Subject<string> = new Subject<string>();
 
-  constructor() { }
+  constructor() {}
 
   connect(): void {
-    this.socket = new WebSocket(environment.chatWebsocketProtocol+environment.chatWebsocketLocation+":"+environment.chatWebsocketPort+"/"+environment.chatWebsocketPath);
+    this.socket = new WebSocket(
+      environment.chatWebsocketProtocol +
+        environment.chatWebsocketLocation +
+        ':' +
+        environment.chatWebsocketPort +
+        '/' +
+        environment.chatWebsocketPath +
+        '?access_token=' +
+        JSON.parse(localStorage.getItem('user') || '{}').stsTokenManager
+          .accessToken
+    );
 
     this.socket.onopen = () => {
       console.log('WebSocket connection established.');
