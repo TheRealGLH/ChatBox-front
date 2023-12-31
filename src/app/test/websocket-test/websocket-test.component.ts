@@ -27,7 +27,7 @@ export class WebsocketTestComponent implements OnInit {
   }
 
   sendMessage(): void {
-    const message = "{'messageType': 'Ping'}";
+    const message = "{\"MessageType\": \"Ping\"}";
     console.log(message)
     this.websocketService.sendMessage(message);
   }
