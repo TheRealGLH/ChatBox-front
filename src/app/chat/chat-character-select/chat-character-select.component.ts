@@ -16,5 +16,13 @@ import { Character } from 'src/models/character/character';
 })
 export class ChatCharacterSelectComponent {
   @Input() characters: Character[] = [];
-  @Output() selectedCharacter = this.characters[0];
+  @Output() selectEvent = new EventEmitter<Character>();
+  selectedCharacter = this.characters[0];
+
+
+  _selectCharacterEvent(character: Character)
+  {
+    console.debug("Emitting: "+character);
+    this.selectEvent.emit(character);
+  }
 }
