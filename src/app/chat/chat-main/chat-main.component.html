@@ -11,9 +11,9 @@
 
   <div id="textfield">
     <mat-form-field class="chat-full-width">
-      <textarea id="chat-input" matNativeControl></textarea>
+      <textarea id="chat-input" matInput [formControl]="formControlChat"></textarea>
     </mat-form-field>
-    <button mat-icon-button color="primary" id="chat-send">
+    <button mat-icon-button color="primary" id="chat-send" (click)="_sendMessage(formControlChat.value??'')">
       <mat-icon>send</mat-icon>
     </button>
   </div>
