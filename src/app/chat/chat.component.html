@@ -1,0 +1,9 @@
+<div *ngIf="this.chatState.getSignedInCharacter() == undefined; else chatmain">
+  <app-chat-character-select [characters]="this.chatState.userCharacters" (selectEvent)="selectCharacter($event)"></app-chat-character-select>
+</div>
+
+<ng-template #chatmain>
+  <div>
+    <app-chat-main [chatMessages]="this.chatState.savedMessages" (messageEvent)="sendTextMessage($event)"></app-chat-main>
+  </div>
+</ng-template>
